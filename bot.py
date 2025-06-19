@@ -11,6 +11,7 @@ django.setup()
 
 # 2. Import models AFTER Django setup
 from blog.models import TelegramUser
+from telegram_bot import settings
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -46,6 +47,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
 if __name__ == '__main__':
-    application = ApplicationBuilder().token('7791588472:AAFk0k1HnNf2hzz_9Vn5N_y1pV_z0COH0rc').build()
+    application = ApplicationBuilder().token(settings.TELEGRAM_BOT_TOKEN).build()
     application.add_handler(CommandHandler('start', start))
     application.run_polling()
