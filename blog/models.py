@@ -20,3 +20,12 @@ class Blog(TimeStampMixin):
 class Comment(TimeStampMixin):
     comment = models.CharField(max_length=512)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    
+
+
+class TelegramUser(TimeStampMixin):    
+    username = models.CharField(max_length=255, unique=True)
+    
+
+    def __str__(self):
+        return self.username
